@@ -129,7 +129,7 @@ function PaymentForm() {
         </div>
       </form>
       : 
-      <h1>Payment Successfully</h1>
+      <h1>Success! Your payment was successful!</h1>
       }
     </React.Fragment >
   )
