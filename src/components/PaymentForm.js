@@ -86,16 +86,7 @@ function PaymentForm() {
                 placeholder="Invoice Number"
               />
             </Col>
-            <Col md={5}>
-              {/* <Input
-                type="number"
-                name="amount"
-                min="1"
-                pattern="[0-9]"
-                onChange={(e) => setAmount(e.target.value)}
-                placeholder="Amount"
-              /> */}
-              
+            <Col md={5}>              
               <CurrencyInput
                 id="input-example"
                 className="form-control"
@@ -124,7 +115,13 @@ function PaymentForm() {
           </div>
         </div>
         <div className="form-group">
-          <Button>Pay {formatter.format(amount / 100)}</Button>
+          <Button disabled={!companyName || !contactName || !cardName || !amount}>
+            Pay {
+              !amount 
+                ? formatter.format(0) 
+                : formatter.format(amount / 100)
+            }
+          </Button>
         </div>
       </form>
     </React.Fragment >
