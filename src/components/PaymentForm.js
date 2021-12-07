@@ -5,7 +5,7 @@ import CurrencyInput from 'react-currency-input-field';
 import axios from 'axios'
 
 function PaymentForm() {
-  // const [success, setSuccess] = useState(false)
+  const [success, setSuccess] = useState(false)
   const [companyName, setCompanyName] = useState('')
   const [contactName, setContactName] = useState('')
   const [cardName, setCardName] = useState('')
@@ -42,7 +42,10 @@ function PaymentForm() {
           metadata: JSON.stringify(metadata),
           invoice: invoice
         })
-        console.log(response)
+        if (response.data.success) {
+          console.log('Successful Payment')
+          setSuccess(true)
+        }
       } catch (error) {
         console.log("Error:", error)
       }
@@ -51,6 +54,7 @@ function PaymentForm() {
 
   return (
     <React.Fragment>
+      {!success ? 
       <form id="payment-form" onSubmit={handleSubmit}>
         <div className="form-group mt-2">
           <Row>
@@ -124,6 +128,9 @@ function PaymentForm() {
           </Button>
         </div>
       </form>
+      : 
+      <h1>Payment Successfully</h1>
+      }
     </React.Fragment >
   )
 }
