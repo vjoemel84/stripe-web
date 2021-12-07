@@ -106,7 +106,6 @@ function PaymentForm() {
                 onValueChange={(value) => setAmount(value)}
                 disableGroupSeparators={true}
               />
-              <span className="small">{formatter.format(amount / 100)}</span>
             </Col>
           </Row>
         </div>
@@ -125,7 +124,7 @@ function PaymentForm() {
           </div>
         </div>
         <div className="form-group">
-          <Button>Pay</Button>
+          <Button>Pay {formatter.format(amount / 100)}</Button>
         </div>
       </form>
     </React.Fragment >
